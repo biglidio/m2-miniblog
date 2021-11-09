@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="biglidio_miniblog_post" engine="innodb" comment="Posts">
+        <column 
+            xsi:type="int" 
+            name="id" 
+            padding="10" 
+            unsigned="true" 
+            nullable="false" 
+            identity="true" 
+            comment="ID"
+        />
+        <column 
+            xsi:type="varchar" 
+            name="title" 
+            nullable="false" 
+            comment="Title"
+        />
+        <column 
+            xsi:type="text" 
+            name="content" 
+            nullable="false" 
+            comment="Content"
+        />
+        <column 
+            xsi:type="text" 
+            name="tags" 
+            nullable="false" 
+            comment="Tags"
+        />
+        <column 
+            xsi:type="int" 
+            name="author_id" 
+            padding="10" 
+            unsigned="true" 
+            nullable="false" 
+            identity="false" 
+            comment="Author ID"
+        />
+        <column 
+            xsi:type="boolean" 
+            name="is_published" 
+            nullable="false" 
+            default="false" 
+            comment="Is published"
+        />
+        <column 
+            xsi:type="datetime" 
+            name="created_at" 
+            nullable="false" 
+            default="CURRENT_TIMESTAMP"
+            on_update="false" 
+            comment="Created at"
+        />
+        <column 
+            xsi:type="datetime" 
+            name="updated_at" 
+            nullable="false" 
+            default="CURRENT_TIMESTAMP"
+            on_update="true" 
+            comment="Updated at"
+        />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        
+        <constraint 
+            xsi:type="foreign" 
+            referenceId="BIGLIDIO_MINIBLOG_POST_AUTHOR_ID_ADMIN_USER_USER_ID" 
+            table="biglidio_miniblog_post" 
+            column="author_id" 
+            referenceTable="admin_user" 
+            referenceColumn="user_id" 
+            onDelete="CASCADE"
+        />
+    </table>
+</schema>
