@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Biglidio_MiniBlog::miniblog"
+            title="Mini Blog"
+            translate="title"
+            module="Biglidio_MiniBlog"
+            resource="Biglidio_MiniBlog::miniblog"
+            parent="Magento_Backend::content"
+            sortOrder="900"
+        />
+        <add
+            id="Biglidio_MiniBlog::post"
+            title="Posts"
+            translate="title"
+            module="Biglidio_MiniBlog"
+            resource="Biglidio_MiniBlog::post"
+            parent="Biglidio_MiniBlog::miniblog"
+            action="miniblog/post"
+        />
+    </menu>
+</config>
