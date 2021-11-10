@@ -34,9 +34,11 @@
                 <label translate="true">Title</label>
             </settings>
         </column>
-        <column name="author_id">
+        <column name="author_id" component="Magento_Ui/js/grid/columns/select">
             <settings>
                 <label translate="true">Author</label>
+                <options class="Biglidio\MiniBlog\Model\Config\Source\AuthorName"/>
+                <dataType>select</dataType>
             </settings>
         </column>
         <column name="tags">
