@@ -74,5 +74,9 @@
             referenceColumn="user_id" 
             onDelete="CASCADE"
         />
+        
+        <index referenceId="BIGLIDIO_MINIBLOG_POST_TITLE" indexType="fulltext">
+            <column name="title"/>
+        </index>
     </table>
 </schema>

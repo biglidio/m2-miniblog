@@ -4,6 +4,14 @@
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">biglidio_miniblog_post_listing.biglidio_miniblog_post_listing_data_source</item>
         </item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Post</item>
+                <item name="url" xsi:type="string">miniblog/post/new</item>
+                <item name="class" xsi:type="string">primary</item>
+            </item>
+        </item>
     </argument>
     <settings>
         <deps>
@@ -14,6 +22,9 @@
     <dataSource name="biglidio_miniblog_post_listing_data_source" component="Magento_Ui\js\grid\provider">
         <settings>
             <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
         </settings>
         <aclResource>Biglidio_MiniBlog::post</aclResource>
         <dataProvider name="biglidio_miniblog_post_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
@@ -23,15 +34,58 @@
             </settings>
         </dataProvider>
     </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <paging name="listing_paging"/>
+        <columnsControls name="columns_controls"/>
+        <bookmark name="bookmarks"/>
+        <filters name="listing_filters"/>
+    </listingToolbar>
     <columns name="biglidio_miniblog_post_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">biglidio_miniblog_post_listing.biglidio_miniblog_post_listing.biglidio_miniblog_post_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="*/*/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="selectProvider" xsi:type="string">biglidio_miniblog_post_listing.biglidio_miniblog_post_listing.biglidio_miniblog_post_columns.ids</param>
+                <param name="indexField" xsi:type="string">id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+            </editorConfig>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
         <column name="id">
             <settings>
                 <label translate="true">ID</label>
+                <filter>textRange</filter>
             </settings>
         </column>
         <column name="title">
             <settings>
                 <label translate="true">Title</label>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
             </settings>
         </column>
         <column name="author_id" component="Magento_Ui/js/grid/columns/select">
@@ -39,11 +93,25 @@
                 <label translate="true">Author</label>
                 <options class="Biglidio\MiniBlog\Model\Config\Source\AuthorName"/>
                 <dataType>select</dataType>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
             </settings>
         </column>
         <column name="tags">
             <settings>
                 <label translate="true">Tags</label>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
             </settings>
         </column>
         <column name="is_published" component="Magento_Ui/js/grid/columns/select">
@@ -51,16 +119,25 @@
                 <label translate="true">Published</label>
                 <options class="Magento\Config\Model\Config\Source\Yesno"/>
                 <dataType>select</dataType>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
             </settings>
         </column>
         <column name="created_at" component="Magento_Ui/js/grid/columns/date">
             <settings>
                 <label translate="true">Created at</label>
+                <filter>dateRange</filter>
             </settings>
         </column>
         <column name="updated_at" component="Magento_Ui/js/grid/columns/date">
             <settings>
                 <label translate="true">Updated at</label>
+                <filter>dateRange</filter>
             </settings>
         </column>
         <actionsColumn name="actions" class="Biglidio\MiniBlog\Ui\Component\Listing\Column\Actions"/>

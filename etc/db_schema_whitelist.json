@@ -13,6 +13,9 @@
         "constraint": {
             "PRIMARY": true,
             "BIGLIDIO_MINIBLOG_POST_AUTHOR_ID_ADMIN_USER_USER_ID": true
+        },
+        "index": {
+            "BIGLIDIO_MINIBLOG_POST_TITLE": true
         }
     }
 }
