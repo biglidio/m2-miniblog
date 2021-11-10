@@ -42,6 +42,22 @@
         <columnsControls name="columns_controls"/>
         <bookmark name="bookmarks"/>
         <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <settings>
+                <selectProvider>biglidio_miniblog_post_listing.biglidio_miniblog_post_listing.biglidio_miniblog_post_columns.ids</selectProvider>
+            </settings>
+            <action name="delete">
+                <settings>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <url path="*/*/massDelete"/>
+                    <confirm>
+                        <title translate="true">Delete items</title>
+                        <message translate="true">Are you sure you want to delete the selected items?</message>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
     </listingToolbar>
     <columns name="biglidio_miniblog_post_columns">
         <settings>
