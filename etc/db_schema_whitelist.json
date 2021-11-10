@@ -1,0 +1,18 @@
+{
+    "biglidio_miniblog_post": {
+        "column": {
+            "id": true,
+            "title": true,
+            "content": true,
+            "tags": true,
+            "author_id": true,
+            "is_published": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "BIGLIDIO_MINIBLOG_POST_AUTHOR_ID_ADMIN_USER_USER_ID": true
+        }
+    }
+}
