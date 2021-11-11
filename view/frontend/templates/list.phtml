@@ -1,0 +1,24 @@
+<?php 
+/** @var $block \Biglidio\MiniBlog\Block\Post\View */
+
+// echo '<pre>';
+$posts = $block->getPosts();
+// foreach ($posts as $post) {
+//     $post = $post->getId();
+//     var_dump($post);
+// }
+// exit;
+?>
+
+<h1><?= __('List of Posts') ?></h1>
+
+<ul>
+    <?php foreach ($posts as $post): ?>
+        <li>
+            <p><strong>Title:</strong> <?= $post->getTitle() ?></p>
+            <p><strong>Tags:</strong> <?= $post->getTags() ?></p>
+            <p><strong>Author:</strong> <?= $block->getAuthorName($post->getAuthorId()) ?></p>
+            <br>
+        </li>
+    <? endforeach; ?>
+</ul>
