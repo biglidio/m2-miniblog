@@ -13,7 +13,7 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Delete extends Action implements HttpGetActionInterface
 {
-    const ADMIN_RESOURCE = 'Biglidio_MiniBlog::Post_delete';
+    const ADMIN_RESOURCE = 'Biglidio_MiniBlog::post_delete';
 
     /** @var PostFactory */
     protected $postFactory;
