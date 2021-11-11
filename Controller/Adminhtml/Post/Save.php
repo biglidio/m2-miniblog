@@ -37,31 +37,22 @@ class Save extends Action implements HttpPostActionInterface
         parent::__construct($context);
     }
 
+    /** @return Redirect */
     public function execute(): Redirect
     {
         try {
-            $id = $this->getRequest()->getParam('id');
+            $data = $this->getRequest()->getPostValue();
             
             /** @var Post $post */
             $post = $this->postFactory->create();
 
-            if (!$id) {
-                $this->postResource->load($post, $id);
+            if ($data['id']) {
+                $this->postResource->load($post, $data['id']);
+            } else {
+                unset($data['id']);
             }
 
-            $post->setData([
-                'id'            => $id,
-                'title'         => $this->getRequest()->getParam('title'),
-                'content'       => $this->getRequest()->getParam('content'),
-                'author_id'     => $this->getRequest()->getParam('author_id'),
-                'is_published'  => $this->getRequest()->getParam('is_published'),
-                'tags'          => $this->getRequest()->getParam('tags'),
-                'updated_at'    => date("Y-m-d H:i:s")
-            ]);
-
-            // echo '<pre>';
-            // print_r($post->getData());
-            // exit();
+            $post->setData($data);
 
             if ($this->postResource->save($post)) {
                 $this->messageManager->addSuccessMessage(__('The record has been saved.'));
