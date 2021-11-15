@@ -15,10 +15,10 @@ $posts = $block->getPosts();
                     </div>
                     <div class="post-overview">
                         <h3 class="post-title"><?= $post->getTitle() ?></h3>
-                        <p class="post-tags"><strong>Tags:</strong> <?= $post->getTags() ?></p>
+                        <p class="post-tags"><strong><?= __('Tags') ?>:</strong> <?= $post->getTags() ?></p>
                         <p class="post-date-author">
                             <span class="post-date"><?= date_format(date_create($post->getUpdatedAt()), 'M d, Y') ?></span>
-                             by <span class="post-author"><?= $block->getAuthorName($post->getAuthorId()) ?></span>
+                             <?= __('by') ?> <span class="post-author"><?= $block->getAuthorName($post->getAuthorId()) ?></span>
                         </p>
                     </div>
                 </article>

@@ -5,6 +5,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Biglidio\MiniBlog\Model\ResourceModel\Post\CollectionFactory as PostCollectionFactory;
 use Magento\User\Model\ResourceModel\User\CollectionFactory as UserCollectionFactory;
+use Magento\Framework\HTTP\PhpEnvironment\Request;
 
 class View extends Template
 {
@@ -38,4 +39,15 @@ class View extends Template
         $author = $author->getFirstItem();
         return $author->getFirstname() . ' ' . $author->getLastname();
     }
+    
+	public function getPost()
+	{
+        /** @var Request $request */
+        $request = $this->getRequest();
+        $id = $request->getParam('id');
+        $post = $this->postCollectionFactory->create()
+            ->addFieldToFilter('id', $id)
+            ->getFirstItem();
+        return $post;
+	}
 }
