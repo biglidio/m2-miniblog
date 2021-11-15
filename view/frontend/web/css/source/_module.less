@@ -8,6 +8,14 @@
             padding-bottom: 30px;
             margin-bottom: 30px;
             border-bottom: 1px solid lightgrey;
+            
+            a {
+                color: #333333;
+                
+                &:hover {
+                    text-decoration: none;
+                }
+            }
 
             &:last-child {
                 padding: 0;
@@ -37,15 +45,15 @@
     }
 
     .miniblog-post-index {
+        .page-title {
+            margin-bottom: 15px;
+        }
         .post {
-            .post-title {
-                margin-bottom: 15px;
-            }
             .post-date-author {
                 font-size: 14px;
                 font-weight: bold;
 
-                .post-author {
+                .post-date {
                     font-weight: normal;
                 }
             }

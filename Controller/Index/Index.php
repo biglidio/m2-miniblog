@@ -9,6 +9,8 @@ class Index extends Action
 {
     public function execute()
     {
-        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $page = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $page->getConfig()->getTitle()->set(__("MiniBlog"));
+        return $page;
     }
 }

@@ -4,7 +4,6 @@ $post = $block->getPost();
 ?>
 
 <article class="post">
-    <h1 class="post-title"><?= $post->getTitle() ?></h1>
     <p class="post-date-author">
         <?= __('By') ?> <span class="post-author"><?= $block->getAuthorName($post->getAuthorId()) ?></span>
         <br>
