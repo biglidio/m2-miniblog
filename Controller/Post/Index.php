@@ -28,6 +28,7 @@ class Index extends Action
         $id = $request->getParam('id');
         
         $post = $this->postCollectionFactory->create()
+        ->addFieldToFilter('is_published', 1)
         ->addFieldToFilter('id', $id)
         ->getFirstItem();
         

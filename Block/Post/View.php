@@ -46,6 +46,7 @@ class View extends Template
         $request = $this->getRequest();
         $id = $request->getParam('id');
         $post = $this->postCollectionFactory->create()
+            ->addFieldToFilter('is_published', 1)
             ->addFieldToFilter('id', $id)
             ->getFirstItem();
         return $post;
