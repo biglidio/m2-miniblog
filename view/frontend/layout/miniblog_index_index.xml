@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Biglidio\MiniBlog\Block\Post\View" name="miniblog.post.list" template="Biglidio_MiniBlog::list.phtml"/>
+            <block class="Biglidio\MiniBlog\Block\Post\View" name="miniblog.post.list" template="Biglidio_MiniBlog::post-list.phtml"/>
         </referenceContainer>
     </body>
 </page>

@@ -1,0 +1,53 @@
+& when (@media-common = true) {
+    
+    .post-list {
+        padding: 0;
+        list-style: none;
+
+        .post-item {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid lightgrey;
+
+            &:last-child {
+                padding: 0;
+                margin: 0;
+                border: 0;
+            }
+
+            article {
+                display: flex;
+            }
+
+            .post-image {
+                opacity: 1;
+                max-width: 250px;
+
+                img {
+                    opacity: 1;
+                }
+            }
+            .post-overview {
+                opacity: 1;
+                padding-left: 20px;
+
+                .post-title {
+                    opacity: 1;
+                    text-transform: uppercase;
+                    margin: 10px 0 15px 0;
+                }
+                .post-content {
+                    opacity: 1;
+                }
+                .post-tags {
+                    opacity: 1;
+                }
+                .post-date-author {
+                    opacity: 1;
+                    font-size: 12px;               
+                }
+            }
+        }
+    }
+
+}

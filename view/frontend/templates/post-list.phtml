@@ -1,0 +1,28 @@
+<?php 
+/** @var $block \Biglidio\MiniBlog\Block\Post\View */
+$posts = $block->getPosts();
+?>
+
+<h1><?= __('List of Posts') ?></h1>
+
+<ul class="post-list">
+    <?php foreach ($posts as $post): ?>
+        <li class="post-item">
+            <a href="<?= $block->getUrl('miniblog/post/index/id/' . $post->getId()) ?>">
+                <article>
+                    <div class="post-image">
+                        <img src="https://st2.depositphotos.com/2026267/5233/i/950/depositphotos_52334423-stock-photo-news-article-on-digital-tablet.jpg">
+                    </div>
+                    <div class="post-overview">
+                        <h3 class="post-title"><?= $post->getTitle() ?></h3>
+                        <p class="post-tags"><strong>Tags:</strong> <?= $post->getTags() ?></p>
+                        <p class="post-date-author">
+                            <span class="post-date"><?= date_format(date_create($post->getUpdatedAt()), 'M d, Y') ?></span>
+                             by <span class="post-author"><?= $block->getAuthorName($post->getAuthorId()) ?></span>
+                        </p>
+                    </div>
+                </article>
+            </a>
+        </li>
+    <? endforeach; ?>
+</ul>
