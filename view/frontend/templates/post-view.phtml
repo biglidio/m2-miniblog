@@ -5,15 +5,14 @@ $post = $block->getPost();
 
 <article class="post">
     <p class="post-date-author">
-        <?= __('By') ?> <span class="post-author"><?= $block->getAuthorName($post->getAuthorId()) ?></span>
-        <br>
+        <?= __('By') ?> <span class="post-author"><?= $block->getAuthorName($post->getAuthorId()) ?></span> |
         <span class="post-date">
             <?= date_format(date_create($post->getUpdatedAt()), 'M d, Y') ?>
             <?= __('at') ?> <?= date_format(date_create($post->getUpdatedAt()), 'H:i') ?>
         </span>
     </p>
     <div class="post-image">
-        <img src="https://st2.depositphotos.com/2026267/5233/i/950/depositphotos_52334423-stock-photo-news-article-on-digital-tablet.jpg">
+        <img src="<?= $block->getCoverUrl($post->getCover()) ?>">
     </div>
     <p class="post-content"><?= $post->getContent() ?></p>
     <p class="post-tags"><strong><?= __('Tags') ?>:</strong> <?= $post->getTags() ?></p>

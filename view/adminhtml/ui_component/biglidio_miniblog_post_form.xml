@@ -52,6 +52,7 @@
                 <item name="sortOrder" xsi:type="number">10</item>
             </item>
         </argument>
+        
         <field name="id" formElement="input">
             <settings>
                 <dataScope>id</dataScope>
@@ -68,6 +69,31 @@
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
             </settings>
+        </field>
+        <field formElement="imageUploader" name="cover">
+            <settings>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <dataType>string</dataType>
+                <label translate="true">Cover Photo</label>
+                <visible>true</visible>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <required>true</required>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="miniblog/post/upload"/>
+                        </uploaderConfig>
+                        <previewTmpl>Biglidio_MiniBlog/image-preview</previewTmpl>
+                        <openDialogTitle>Media Gallery</openDialogTitle>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
         </field>
         <field name="author_id" sortOrder="110" formElement="select">
             <settings>
@@ -113,17 +139,7 @@
                 </validation>
             </settings>
         </field>
-    </fieldset>
-
-
-    <fieldset name="content" sortOrder="20">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="collapsible" xsi:type="boolean">true</item>
-                <item name="label" xsi:type="string" translate="true">Content</item>
-            </item>
-        </argument>
-        <field name="content" sortOrder="30" formElement="wysiwyg">
+        <field name="content" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="template" xsi:type="string">ui/form/field</item>
@@ -131,6 +147,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="wysiwyg" xsi:type="boolean">true</item>
                     <item name="rows" xsi:type="number">8</item>
+                    <item name="label" xsi:type="string" translate="true">Post Content</item>
                 </item>
             </argument>
             <settings>
@@ -140,5 +157,4 @@
             </settings>
         </field>
     </fieldset>
-
 </form>

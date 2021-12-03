@@ -9,7 +9,7 @@ $posts = $block->getPosts();
             <a href="<?= $block->getUrl('miniblog/post/index/id/' . $post->getId()) ?>">
                 <article>
                     <div class="post-image">
-                        <img src="https://st2.depositphotos.com/2026267/5233/i/950/depositphotos_52334423-stock-photo-news-article-on-digital-tablet.jpg">
+                        <img src="<?= $block->getCoverUrl($post->getCover()) ?>">
                     </div>
                     <div class="post-overview">
                         <h3 class="post-title"><?= $post->getTitle() ?></h3>

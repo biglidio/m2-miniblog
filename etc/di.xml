@@ -13,4 +13,33 @@
             </argument>
         </arguments>
     </type>
+
+    <virtualType name="Biglidio\MiniBlog\CoverImageUpload" type="Biglidio\MiniBlog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">miniblog/tmp/post/cover</argument>
+            <argument name="basePath" xsi:type="string">miniblog/post/cover</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument> 
+        </arguments>
+    </virtualType>
+    <type name="Biglidio\MiniBlog\Controller\Adminhtml\Post\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Biglidio\MiniBlog\CoverImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Biglidio\MiniBlog\Controller\Adminhtml\Post\Save">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Biglidio\MiniBlog\CoverImageUpload</argument>
+        </arguments>
+    </type>
 </config>
